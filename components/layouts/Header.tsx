@@ -40,6 +40,8 @@ const Header = () => {
             style={{
               width: 132,
             }}
+            type={'primary'}
+            hoverColor={'red'}
           >
             <H4
               style={{
