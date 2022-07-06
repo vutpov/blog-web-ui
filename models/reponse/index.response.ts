@@ -6,4 +6,13 @@ interface ReponseData<T> {
   };
 }
 
-export { type ReponseData };
+interface PaginationReponseData<T> extends ReponseData<T> {
+  pages: {
+    totalPage: number;
+    page: number;
+    totalCount: number;
+    pageSize: number;
+  };
+}
+
+export { ReponseData, PaginationReponseData };

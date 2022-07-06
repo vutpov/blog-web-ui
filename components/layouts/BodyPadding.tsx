@@ -4,4 +4,8 @@ const BodyPadding = styled.div`
   padding: 0 103px;
 `
 
-export default BodyPadding
+const BodyWidth = styled.div`
+  width: calc(100vw - 206px);
+`
+
+export { BodyPadding as default, BodyWidth }

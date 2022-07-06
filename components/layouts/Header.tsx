@@ -26,9 +26,11 @@ const RightNav = styled.nav`
   gap: 36px;
 `
 
-const Header = () => {
+const Header: React.FC<{
+  style?: React.CSSProperties
+}> = (props) => {
   return (
-    <Outter>
+    <Outter {...props}>
       <Container>
         <div />
         <Logo src={'logo.png'} />

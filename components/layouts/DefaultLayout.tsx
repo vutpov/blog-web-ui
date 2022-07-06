@@ -8,10 +8,18 @@ const DefaultLayout: React.FC<{
 }> = (props) => {
   return (
     <App>
-      <Header />
+      <Header
+        style={{
+          marginBottom: 80,
+        }}
+      />
       {props.children}
 
-      <Footer />
+      <Footer
+        style={{
+          marginTop: 80,
+        }}
+      />
     </App>
   )
 }

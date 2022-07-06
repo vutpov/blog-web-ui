@@ -1,5 +1,5 @@
 import React from 'react'
-import styled from 'styled-components'
+import styled, { useTheme } from 'styled-components'
 import { Post } from '../../models/reponse/post.response'
 import { H4, H5 } from '../shared/Text'
 
@@ -13,7 +13,9 @@ const Container = styled.div`
 const StyledImage = styled.img``
 
 const PostItem: React.FC<PostItemProps> = (props) => {
-  const { attachment, description, id, title } = props
+  const { attachment, description, id, title, username, categoryName } = props
+
+  const { grayColor } = useTheme()
 
   return (
     <Container>
@@ -35,13 +37,23 @@ const PostItem: React.FC<PostItemProps> = (props) => {
         {description}
       </H5>
 
-      <H5
+      <div
         style={{
+          display: 'flex',
+          gap: 10,
           marginTop: 23,
         }}
       >
-        Written by
-      </H5>
+        <H5>Written by {username}</H5>
+
+        <H5
+          style={{
+            color: grayColor.l1,
+          }}
+        >
+          {categoryName}
+        </H5>
+      </div>
     </Container>
   )
 }

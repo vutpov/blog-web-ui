@@ -1,4 +1,3 @@
-import { Button } from 'antd'
 import type { NextPage } from 'next'
 import Home from '../components/home'
 import BodyPadding from '../components/layouts/BodyPadding'
