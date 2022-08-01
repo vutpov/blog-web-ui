@@ -5,6 +5,7 @@ interface Post {
   attachment: string;
   username: string;
   categoryName: string;
+  categoryId: any;
 }
 
 export { type Post };

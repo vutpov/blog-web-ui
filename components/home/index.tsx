@@ -11,12 +11,6 @@ import PostItem from '../post/BlogItem'
 
 const category = new CategoryService()
 
-const Container = styled.div`
-  display: grid;
-  row-gap: 33px;
-  column-gap: 70px;
-`
-
 const Home = () => {
   const [categories, setCategories] = useState<Category[]>([
     {
@@ -61,6 +55,7 @@ const Home = () => {
         {categories.map((category: Category) => {
           return (
             <TabPane
+              tabKey={category.id}
               key={category.id}
               tab={<H5>{category.name}</H5>}
               forceRender={true}
@@ -69,16 +64,13 @@ const Home = () => {
         })}
       </Tabs>
 
-      <Container
+      <ListPost
         style={{
           gridTemplateColumns: layout === 'list' ? '1fr' : 'repeat(3, 1fr)',
         }}
-      >
-        <ListPost
-          Component={layout === 'list' ? PostItem : BlogCard}
-          categoryId={categoryId}
-        />
-      </Container>
+        Component={layout === 'list' ? PostItem : BlogCard}
+        categoryId={categoryId}
+      />
     </>
   )
 }

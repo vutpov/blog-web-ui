@@ -1,4 +1,3 @@
-import App from '../app'
 import React from 'react'
 import Footer from './Footer'
 import Header from './Header'
@@ -7,7 +6,7 @@ const DefaultLayout: React.FC<{
   children: any
 }> = (props) => {
   return (
-    <App>
+    <>
       <Header
         style={{
           marginBottom: 80,
@@ -20,7 +19,7 @@ const DefaultLayout: React.FC<{
           marginTop: 80,
         }}
       />
-    </App>
+    </>
   )
 }
 

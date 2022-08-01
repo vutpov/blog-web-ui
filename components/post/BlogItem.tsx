@@ -1,3 +1,4 @@
+import Link from 'next/link'
 import React from 'react'
 import styled, { useTheme } from 'styled-components'
 import { Post } from '../../models/reponse/post.response'
@@ -10,10 +11,22 @@ const Container = styled.div`
   border-left: 5px solid ${({ theme }) => theme.primaryColor.main};
 `
 
-const StyledImage = styled.img``
+const StyledImage = styled.img`
+  width: 100%;
+  height: 350px;
+  object-fit: cover;
+  object-position: center;
+`
 
-const PostItem: React.FC<PostItemProps> = (props) => {
-  const { attachment, description, id, title, username, categoryName } = props
+const StyledLink = styled(H4)`
+  &:hover {
+    color: ${({ theme }) => theme.primaryColor.main};
+    cursor: pointer;
+  }
+`
+
+const PostItem: React.FC<React.PropsWithChildren<PostItemProps>> = (props) => {
+  const { attachment, description, title, username, categoryName, id } = props
 
   const { grayColor } = useTheme()
 
@@ -21,13 +34,17 @@ const PostItem: React.FC<PostItemProps> = (props) => {
     <Container>
       {attachment && <StyledImage src={attachment} />}
 
-      <H4
-        style={{
-          marginTop: 28,
-        }}
-      >
-        {title}
-      </H4>
+      <Link href={`/post/${id}`} passHref>
+        <a>
+          <StyledLink
+            style={{
+              marginTop: 28,
+            }}
+          >
+            {title}
+          </StyledLink>
+        </a>
+      </Link>
 
       <H5
         style={{
@@ -53,6 +70,8 @@ const PostItem: React.FC<PostItemProps> = (props) => {
         >
           {categoryName}
         </H5>
+
+        {props.children}
       </div>
     </Container>
   )

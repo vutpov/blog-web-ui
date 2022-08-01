@@ -15,4 +15,4 @@ interface PaginationReponseData<T> extends ReponseData<T> {
   };
 }
 
-export { ReponseData, PaginationReponseData };
+export { type ReponseData, type PaginationReponseData };

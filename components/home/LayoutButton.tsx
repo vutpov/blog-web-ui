@@ -49,10 +49,11 @@ interface LayoutButtonProps {
 
 const LayoutButton: React.FC<LayoutButtonProps> = (props) => {
   const [left, setLeft] = useState(true)
-  const { onChange } = props
+  const { onChange, ...rest } = props
 
   return (
     <Container
+      {...rest}
       left={left}
       onClick={() => {
         const result = !left

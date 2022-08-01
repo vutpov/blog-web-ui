@@ -1,11 +1,9 @@
+import { Post } from '@/models/reponse/post.response'
 import Link from 'next/link'
 import React from 'react'
 import styled, { useTheme } from 'styled-components'
-import { Post } from '../../models/reponse/post.response'
+import BlogAction from '../post/BlogAction'
 import { H4, H5 } from '../shared/Text'
-import BlogAction from './BlogAction'
-
-interface BlogCardProps extends Post {}
 
 const Container = styled.div``
 
@@ -16,18 +14,13 @@ const StyledImage = styled.img`
   object-position: center;
 `
 
-const InfoContaienr = styled.div`
-  padding: 22px 45px;
+const ContentContainer = styled.div`
+  padding: 0 34px;
 `
 
-const StyledLink = styled(H4)`
-  &:hover {
-    color: ${({ theme }) => theme.primaryColor.main};
-    cursor: pointer;
-  }
-`
+interface PostDetailProps extends Post {}
 
-const BlogCard: React.FC<React.PropsWithChildren<BlogCardProps>> = (props) => {
+const PostDetail: React.FC<PostDetailProps> = (props) => {
   const { attachment, description, title, username, categoryName, id } = props
 
   const { grayColor } = useTheme()
@@ -36,18 +29,14 @@ const BlogCard: React.FC<React.PropsWithChildren<BlogCardProps>> = (props) => {
     <Container>
       {attachment && <StyledImage src={attachment} />}
 
-      <InfoContaienr>
-        <Link href={`/post/${id}`} passHref>
-          <a>
-            <StyledLink
-              style={{
-                marginTop: 28,
-              }}
-            >
-              {title}
-            </StyledLink>
-          </a>
-        </Link>
+      <ContentContainer>
+        <H4
+          style={{
+            marginTop: 60,
+          }}
+        >
+          {title}
+        </H4>
 
         <H5
           style={{
@@ -74,11 +63,11 @@ const BlogCard: React.FC<React.PropsWithChildren<BlogCardProps>> = (props) => {
             {categoryName}
           </H5>
 
-          {props.children}
+          <BlogAction {...props} />
         </div>
-      </InfoContaienr>
+      </ContentContainer>
     </Container>
   )
 }
 
-export default BlogCard
+export default PostDetail

@@ -6,7 +6,7 @@ const Button = styled(AntdButton).withConfig({
     return !['hoverColor'].includes(prop) && defaultValidatorFn(prop)
   },
 })<{
-  hoverColor: string
+  hoverColor?: string
 }>`
   height: unset;
   border-radius: 8px;
